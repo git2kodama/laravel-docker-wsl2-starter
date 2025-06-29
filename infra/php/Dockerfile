@@ -17,4 +17,7 @@ RUN apt-get update && \
 # php.ini を差し替え
 COPY php.ini /usr/local/etc/php/php.ini
 
+RUN useradd -u 1000 -m laravel
+USER laravel
+
 WORKDIR /var/www
