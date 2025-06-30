@@ -30,6 +30,13 @@ services:
       - "33060:3306"   # クライアントツールでローカル接続したい場合
     volumes:
       - db-data:/var/lib/mysql
-
+  e2e:
+    build:
+      context: .
+      dockerfile: infra/playwright/Dockerfile
+    volumes:
+      - .:/e2e
+    depends_on:
+      - web        
 volumes:
   db-data:
